@@ -40,23 +40,33 @@ nav {
   padding: 1.2rem;
   border-bottom: 1px solid #eee;
 }
+nav .logo-left {
+  display: flex;
+  align-items: center;
+}
 nav img {
+  display: flex;
+  width: 50px;
+  height: 50px;
 }
 nav a {
-  font-style: none;
+  text-decoration: none;
 }
+nav a:link,
+nav a:visited {
+  color: #555;
+}
+nav a:hover,
+nav a:active {
+  color: #f84c4c;
+}
+
 .nav-content-right {
   display: flex;
   gap: 1.6rem;
   align-self: center;
 }
-.dark-mode {
-  color: red;
-  stroke: blue;
-  font-size: 2.4rem;
-  font-weight: 900;
-  transform: translateY(-10%);
-}
+
 .container {
   /* background-color: burlywood; */
   width: 80%;
@@ -80,6 +90,7 @@ nav a {
   width: 80rem;
   height: 50rem;
   border-radius: 1rem;
+  box-shadow: 20px 20px 10px 5px #ddd;
 }
 main {
   display: flex;
@@ -101,7 +112,9 @@ main h1 {
 .blog {
   display: flex;
   gap: 4.8rem;
+  padding: 1.2rem;
   font-size: 1.2rem;
+  box-shadow: 0 0 0.8px 0.2px #777;
 }
 .blog img {
   box-shadow: 0 0 0.8px 0.2px #666;
@@ -122,6 +135,9 @@ main h1 {
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+}
+.blog--info--title {
+  font-size: 1.6rem;
 }
 footer {
   margin: 6.4rem;
