@@ -1,0 +1,74 @@
+[
+  {
+    "title": "The Future of Artificial Intelligence in Healthcare",
+    "content": "Artificial Intelligence (AI) is revolutionizing the healthcare industry...",
+    "tags": "AI, Healthcare, Technology",
+    "createdAt": "2024-05-20T12:00:00.000Z",
+    "updatedAt": "2024-05-20T12:00:00.000Z",
+    "image": ["image1.jpg"]
+  },
+  {
+    "title": "5G Technology: A Game Changer in Mobile Communication",
+    "content": "The advent of 5G technology promises unprecedented speed and connectivity...",
+    "tags": "5G, Mobile, Communication",
+    "createdAt": "2024-05-19T10:30:00.000Z",
+    "updatedAt": "2024-05-19T10:30:00.000Z",
+    "image": ["image2.jpg"]
+  },
+  {
+    "title": "The Rise of Blockchain Technology: Transforming Industries",
+    "content": "Blockchain technology is disrupting various sectors, including finance, supply chain, and healthcare...",
+    "tags": "Blockchain, Technology, Finance",
+    "createdAt": "2024-05-18T15:45:00.000Z",
+    "updatedAt": "2024-05-18T15:45:00.000Z",
+    "image": ["image3.jpg"]
+  },
+  {
+    "title": "Artificial Intelligence in Customer Service: Enhancing User Experience",
+    "content": "AI-powered chatbots and virtual assistants are reshaping customer service operations...",
+    "tags": "AI, Customer Service, User Experience",
+    "createdAt": "2024-05-17T09:00:00.000Z",
+    "updatedAt": "2024-05-17T09:00:00.000Z",
+    "image": ["image4.jpg"]
+  },
+  {
+    "title": "The Potential of Virtual Reality in Education",
+    "content": "Virtual reality (VR) technology offers immersive learning experiences for students...",
+    "tags": "Virtual Reality, Education, Technology",
+    "createdAt": "2024-05-16T14:20:00.000Z",
+    "updatedAt": "2024-05-16T14:20:00.000Z",
+    "image": ["image5.jpg"]
+  },
+  {
+    "title": "Cybersecurity Trends: Addressing Emerging Threats",
+    "content": "As cyber threats evolve, organizations need to adopt advanced security measures...",
+    "tags": "Cybersecurity, Technology, Threats",
+    "createdAt": "2024-05-15T11:10:00.000Z",
+    "updatedAt": "2024-05-15T11:10:00.000Z",
+    "image": ["image6.jpg"]
+  },
+  {
+    "title": "The Impact of Internet of Things (IoT) on Smart Cities",
+    "content": "IoT technology is shaping the development of smart cities with its interconnected devices...",
+    "tags": "IoT, Smart Cities, Technology",
+    "createdAt": "2024-05-14T08:40:00.000Z",
+    "updatedAt": "2024-05-14T08:40:00.000Z",
+    "image": ["image7.jpg"]
+  },
+  {
+    "title": "Augmented Reality: Enhancing Retail Experiences",
+    "content": "AR applications are transforming the way customers interact with products and brands...",
+    "tags": "Augmented Reality, Retail, Technology",
+    "createdAt": "2024-05-13T16:55:00.000Z",
+    "updatedAt": "2024-05-13T16:55:00.000Z",
+    "image": ["image8.jpg"]
+  },
+  {
+    "title": "The Evolution of Cloud Computing: Trends and Innovations",
+    "content": "Cloud computing continues to evolve with advancements in edge computing and hybrid cloud solutions...",
+    "tags": "Cloud Computing, Technology, Innovations",
+    "createdAt": "2024-05-12T12:25:00.000Z",
+    "updatedAt": "2024-05-12T12:25:00.000Z",
+    "image": ["image9.jpg"]
+  }
+]

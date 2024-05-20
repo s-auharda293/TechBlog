@@ -14,7 +14,7 @@ const blogSchema = new mongoose.Schema(
       required: [true, "A blog must have a title"],
       unique: true,
       maxlength: [
-        40,
+        70,
         "A blog title must have less than or equal to 40 characters",
       ],
       minlength: [
@@ -26,7 +26,7 @@ const blogSchema = new mongoose.Schema(
       type: String,
       required: [true, "A blog must have a title"],
       unique: true,
-      minlength: [100, "A blog must have more than or equal to 100 characters"],
+      minlength: [50, "A blog must have more than or equal to 100 characters"],
     },
     // author: {},
     tags: { type: String },
