@@ -39,9 +39,14 @@ const blogSchema = new mongoose.Schema(
       default: Date.now(),
     },
     image: [String],
+    // comments
   },
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
   }
 );
+
+const Blog = mongoose.model("Blog", blogSchema);
+
+module.exports = Blog;
