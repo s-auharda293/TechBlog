@@ -136,8 +136,6 @@ nav {
 //////////////////////////////////////////////////////////
 */
 
-.blogs {
-}
 .blog-section-heading {
   text-align: center;
   font-size: 3.2rem;
@@ -319,6 +317,7 @@ footer {
 .col {
   display: flex;
   flex-direction: column;
+  gap: 0.8rem;
 }
 .footer--right a {
   text-decoration: none;
