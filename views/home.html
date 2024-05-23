@@ -19,13 +19,12 @@
         <div class="logo">
           <img src="./../public/img/logos/logo.png" alt="logo" />
         </div>
-        <p>blogtech<span class="period">.</span></p>
+        <p>TechBlog<span class="period">.</span></p>
       </div>
       <div class="nav--right">
         <a href="#">Home</a>
         <a href="#">Blog</a>
-        <a href="#">Contact</a>
-        <a href="#">Login</a>
+        <a href="#">Log In</a>
         <a href="#" class="sign-up">Sign Up</a>
       </div>
     </nav>
@@ -128,31 +127,46 @@
         </div>
       </div>
       <div class="explore-more">
-        <button><a href="">Explore More Articles</a></button>
+        <button><a href="blog.html">Explore More Articles</a></button>
       </div>
       <div class="subscribe">
         <p>Don't Miss Our Weekly Post</p>
         <p>
-          Subscribe to our newsletter and never miss out on the lateset tech
+          Subscribe to our newsletter and never miss out on the latest tech
           trends again.
         </p>
-        <form class="parent-form">
-          <input
-            type="email"
-            name="email"
-            id="email"
-            class="email"
-            placeholder="name@email.com"
-          />
-          <button class="subscribe-button">Subscribe</button>
-        </form>
+        <div class="subscribe-form">
+          <form class="subscribe-email-form">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="email"
+              placeholder="name@email.com"
+            />
+            <button class="subscribe-button" type="submit">Subscribe</button>
+          </form>
+        </div>
       </div>
     </div>
     <footer>
-      <div class="footer-left">
-        <p>blogtech<span class="period">.</span></p>
+      <div class="footer--left">
+        <p>TechBlog<span class="period">.</span></p>
       </div>
-      <div class="footer-right"></div>
+      <div class="footer--right">
+        <div class="col">
+          <a href="#"><ion-icon name="accessibility-outline"></ion-icon>Home</a>
+          <a href="#"><ion-icon name="log-in-outline"></ion-icon>SignUp</a>
+          <a href="#"><ion-icon name="log-in-outline"></ion-icon>LogIn</a>
+          <a href="#"><ion-icon name="clipboard-outline"></ion-icon>Blog</a>
+        </div>
+        <div class="col">
+          <a href="#"><ion-icon name="logo-instagram"></ion-icon>Instagram</a>
+          <a href="#"><ion-icon name="logo-twitter"></ion-icon>X</a>
+          <a href="#"><ion-icon name="logo-linkedin"></ion-icon>LinkedIn</a>
+          <a href="#"><ion-icon name="logo-facebook"></ion-icon>Facebook</a>
+        </div>
+      </div>
     </footer>
     <script
       type="module"

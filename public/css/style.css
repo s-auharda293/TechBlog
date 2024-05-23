@@ -69,7 +69,7 @@ nav {
 }
 .nav--left p {
   font-size: 3.6rem;
-  font-weight: 800;
+  font-weight: 500;
 }
 .nav--right {
   font-size: 1.6rem;
@@ -85,6 +85,7 @@ nav {
   border: 1px solid #01a8b3;
   padding: 0.4rem 1.6rem;
   border-radius: 0.8rem;
+  transition: all 0.3s;
 }
 .nav--right a:link,
 .nav--right a:visited {
@@ -96,7 +97,7 @@ nav {
 }
 .nav--right .sign-up:hover {
   color: #f4f4e4;
-  background-image: linear-gradient(to right, #2a7d81, #01a8b3);
+  background-color: #01a8b3;
 }
 
 /*
@@ -123,10 +124,8 @@ nav {
 .hero--img {
   height: 60vh;
   width: 60%;
-  object-fit: cover;
-  overflow-y: hidden;
-  transform: translate(3);
-  border-radius: 10px;
+  object-fit: contain;
+  overflow: hidden;
 }
 
 /*
@@ -248,16 +247,23 @@ nav {
   font-size: 1.2rem;
   margin-bottom: 1.2rem;
 }
-.parent-form {
+.subscribe-form {
   position: relative;
+  width: 80%;
+  margin: 0 auto;
+}
+.subsribe-email-form {
+  height: 4.96rem;
 }
 .email {
-  width: 25%;
-  height: 7vh;
+  width: 35rem;
+  height: 100%;
   border-radius: 10rem;
-  border: 1px solid transparent;
+  border: 0.000000001px solid transparent;
   background-color: #100e0e;
   padding: 1.6rem;
+  align-items: center;
+  color: #f4f4e4;
 }
 .email:active {
   border-radius: 1px solid #01a8b3;
@@ -265,10 +271,18 @@ nav {
 .email::placeholder {
   color: #f4f4e4ae;
 }
+.subscribe-email-form input[type="email"] {
+  transition: all 0.3s;
+}
+.subscribe-email-form input[type="email"]:focus {
+  border: 1px solid #01a8b3;
+  outline: none;
+}
+
 .subscribe-button {
   position: absolute;
-  top: 4vh;
-  left: 55%;
+  top: 2.56rem;
+  left: 68rem;
   transform: translateY(-50%);
   height: 3.2rem;
   background-color: #01a8b3;
@@ -278,5 +292,46 @@ nav {
   padding: 0.4rem;
   color: #f4f4e4;
 }
-.footer-left {
+
+/*
+//////////////////////////////////////////////////////////
+
+                      FOOTER
+
+//////////////////////////////////////////////////////////
+*/
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 6.4rem auto;
+  width: 90%;
+}
+.footer--left p {
+  font-size: 4.2rem;
+  font-weight: 500;
+}
+.footer--right {
+  display: flex;
+  font-size: 1.8rem;
+  gap: 3.2rem;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
+.footer--right a {
+  text-decoration: none;
+  color: #f4f4e4;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.footer--right a:link,
+.footer-right a:visited {
+  color: #f4f4e4;
+}
+.footer--right a:hover,
+.footer--right a:active {
+  color: #01a8b3;
 }
