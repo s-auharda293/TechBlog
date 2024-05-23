@@ -6,6 +6,7 @@ exports.getAllBlogs = async (req, res) => {
     res.status(200).json({
       message: "All Blogs returned",
       blogs,
+      length: blogs.length,
     });
   } catch (err) {
     console.log(err);
@@ -48,7 +49,7 @@ exports.createBlog = async (req, res) => {
   }
 };
 
-exports.updateBlog = async (req, res) => {
+exports.updateBlog = async (req, res, next) => {
   try {
     await Blog.findByIdAndUpdate(req.params.id, req.body, {
       runValidators: true,
@@ -65,6 +66,7 @@ exports.updateBlog = async (req, res) => {
       message: err._message,
     });
   }
+  next();
 };
 
 exports.deleteBlog = async (req, res) => {

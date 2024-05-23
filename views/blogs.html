@@ -13,6 +13,11 @@
       rel="stylesheet"
     />
   </head>
+  <style>
+    .main {
+      margin: 10rem 0;
+    }
+  </style>
   <body>
     <nav>
       <div class="nav--left">
@@ -22,23 +27,15 @@
         <p>TechBlog<span class="period">.</span></p>
       </div>
       <div class="nav--right">
-        <a href="home.html">Home</a>
-        <a href="blogs.html">Blog</a>
+        <a href="#">Home</a>
+        <a href="#">Blog</a>
         <a href="login.html">Log In</a>
         <a href="signup.html" class="sign-up">Sign Up</a>
       </div>
     </nav>
     <div class="main">
-      <div class="hero">
-        <p class="animate-character">Innovate. Inform. Inspire.</p>
-        <img
-          src="./../public/img/hero.jpg"
-          alt="hero image"
-          class="hero--img"
-        />
-      </div>
       <div class="blogs container">
-        <p class="blog-section-heading">Recent Posts</p>
+        <p class="blog-section-heading">All Posts</p>
         <div class="grid grid--3-cols">
           <div class="blog-post">
             <div class="blog-post-img">
@@ -124,28 +121,6 @@
               <p>5 min read</p>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="explore-more">
-        <button><a href="blog.html">Explore More Articles</a></button>
-      </div>
-      <div class="subscribe">
-        <p>Don't Miss Our Weekly Post</p>
-        <p>
-          Subscribe to our newsletter and never miss out on the latest tech
-          trends again.
-        </p>
-        <div class="subscribe-form">
-          <form class="subscribe-email-form">
-            <input
-              type="email"
-              name="email"
-              id="email"
-              class="email"
-              placeholder="name@email.com"
-            />
-            <button class="subscribe-button" type="submit">Subscribe</button>
-          </form>
         </div>
       </div>
     </div>

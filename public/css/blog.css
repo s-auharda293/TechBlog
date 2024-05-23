@@ -1,0 +1,35 @@
+.single-blog {
+  width: 80%;
+  margin: 8rem auto;
+  color: #f4f4e4;
+}
+
+.single-blog h1 {
+  font-size: 3.6rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.single-blog .info > p {
+  color: #555;
+  font-size: 1.6rem;
+  margin: 1.2rem 0;
+}
+.single-blog .info > p:nth-child(2) {
+  color: #01a8b3;
+}
+.single-blog .info {
+  display: flex;
+  gap: 4.8rem;
+}
+.single-blog > img {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 6.4rem;
+  margin-bottom: 6.4rem;
+  object-fit: cover;
+  height: 70vh;
+}
+.single-blog .content > p {
+  color: #f4f4e4;
+  font-size: 1.6rem;
+}

@@ -37,7 +37,7 @@ const blogSchema = new mongoose.Schema(
       type: Date,
       default: Date.now(),
     },
-    image: [String],
+    image: { type: [String], default: "pexels-agk42-2599244.jpg" },
     // comments
   },
   {

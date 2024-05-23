@@ -1,0 +1,61 @@
+main {
+  margin: 6rem 0;
+}
+.site-heading {
+  text-align: center;
+  color: #f4f4e4;
+  font-size: 2.4rem;
+  text-transform: uppercase;
+}
+
+.create-blog {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  margin: 0 auto;
+}
+label {
+  font-size: 1.6rem;
+  margin-top: 2.4rem;
+  margin-bottom: 0.4rem;
+}
+input {
+  height: 3.5rem;
+  width: 50%;
+  padding: 1.2rem;
+  background-color: #232220;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  color: #f4f4e4;
+  transition: 0.3s ease;
+  font-family: inherit;
+}
+input:focus {
+  border: 1px solid #01a8b3;
+}
+textarea {
+  padding: 1.2rem;
+  background-color: #232220;
+  transition: 0.3s ease;
+  border: 1px solid transparent;
+  color: #f4f4e4;
+  border-radius: 7px;
+  outline: none;
+  font-family: inherit;
+}
+textarea:focus {
+  border: 1px solid #01a8b3;
+}
+button {
+  width: 10rem;
+  height: 3rem;
+  margin: 2.4rem 0;
+  background-color: #01a8b3;
+  border: 1px solid transparent;
+  color: #f4f4e4;
+  border-radius: 5px;
+}
+button:hover {
+  cursor: pointer;
+}

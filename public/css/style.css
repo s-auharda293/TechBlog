@@ -113,7 +113,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
 }
 .hero p {
   text-align: center;
@@ -122,10 +122,10 @@ nav {
 }
 
 .hero--img {
-  height: 60vh;
-  width: 60%;
-  object-fit: contain;
-  overflow: hidden;
+  height: 90vh;
+  width: 90%;
+  object-fit: cover;
+  /* overflow: hidden; */
 }
 
 /*
@@ -289,6 +289,9 @@ nav {
   width: 9rem;
   padding: 0.4rem;
   color: #f4f4e4;
+}
+.subscribe-button:hover {
+  cursor: pointer;
 }
 
 /*
