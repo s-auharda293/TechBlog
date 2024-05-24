@@ -1,0 +1,114 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        title Blog Ahead
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel='preconnect', href='https://fonts.googleapis.com')
+        link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
+        link(rel='icon', href='/img/logos/logo.png')
+        link(href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap', rel='stylesheet')
+        style.
+            .main {
+            margin: 10rem 0;
+            }
+    body
+        nav
+            .nav--left
+                .logo
+                    img(src='/img/logos/logo.png', alt='logo')
+                p
+                    | TechBlog
+                    span.period .
+            .nav--right
+                a(href='/views') Home
+                a(href='/views/blogs') Blog
+                a(href='/views/login') Log In
+                a.sign-up(href='/views/signup') Sign Up
+        .main
+            .blogs.container
+                p.blog-section-heading All Posts
+                .grid.grid--3-cols
+                    .blog-post
+                        .blog-post-img
+                            img(src='/img/pexels-agk42-2599244.jpg', alt='blog-post-1')
+                        p Cyber Security
+                        h3 The Ever-Evolving Cybersecurity Landscape
+                        .blog-date-read-info
+                            p June 26,2023
+                            p 5 min read
+                    .blog-post
+                        .blog-post-img
+                            img(src='/img/pexels-freestockpro-319968.jpg', alt='blog-post-1')
+                        p Cyber Security
+                        h3 The Ever-Evolving Cybersecurity Landscape
+                        .blog-date-read-info
+                            p June 26,2023
+                            p 5 min read
+                    .blog-post
+                        .blog-post-img
+                            img(src='/img/pexels-googledeepmind-17483848.jpg', alt='blog-post-1')
+                        p Cyber Security
+                        h3 The Ever-Evolving Cybersecurity Landscape
+                        .blog-date-read-info
+                            p June 26,2023
+                            p 5 min read
+                    .blog-post
+                        .blog-post-img
+                            img(src='/img/pexels-googledeepmind-18069488.jpg', alt='blog-post-1')
+                        p Cyber Security
+                        h3 The Ever-Evolving Cybersecurity Landscape
+                        .blog-date-read-info
+                            p June 26,2023
+                            p 5 min read
+                    .blog-post
+                        .blog-post-img
+                            img(src='/img/pexels-with-cloudd-521356380-23709323.jpg', alt='blog-post-1')
+                        p Cyber Security
+                        h3 The Ever-Evolving Cybersecurity Landscape
+                        .blog-date-read-info
+                            p June 26,2023
+                            p 5 min read
+                    .blog-post
+                        .blog-post-img
+                            img(src='/img/pexels-junior-teixeira-1064069-2047905.jpg', alt='blog-post-1')
+                        p Cyber Security
+                        h3 The Ever-Evolving Cybersecurity Landscape
+                        .blog-date-read-info
+                            p June 26,2023
+                            p 5 min read
+        footer
+            .footer--left
+                p
+                    | TechBlog
+                    span.period .
+            .footer--right
+                .col
+                    a(href='#')
+                        ion-icon(name='accessibility-outline')
+                        | Home
+                    a(href='#')
+                        ion-icon(name='log-in-outline')
+                        | SignUp
+                    a(href='#')
+                        ion-icon(name='log-in-outline')
+                        | LogIn
+                    a(href='#')
+                        ion-icon(name='clipboard-outline')
+                        | Blog
+                .col
+                    a(href='#')
+                        ion-icon(name='logo-instagram')
+                        | Instagram
+                    a(href='#')
+                        ion-icon(name='logo-twitter')
+                        | X
+                    a(href='#')
+                        ion-icon(name='logo-linkedin')
+                        | LinkedIn
+                    a(href='#')
+                        ion-icon(name='logo-facebook')
+                        | Facebook
+        script(type='module', src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js')
+        script(nomodule='', src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js')

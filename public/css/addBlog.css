@@ -34,6 +34,29 @@ input {
 input:focus {
   border: 1px solid #01a8b3;
 }
+
+.file-upload-btn {
+  /* Your button styles */
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: #01a8b3;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 13rem;
+  margin: 0;
+}
+#file-name {
+  font-size: 1.6rem;
+  color: #01a8b3;
+  margin-top: 0.4rem;
+}
+
+/* Hide the actual file input */
+#photo {
+  display: none;
+}
+
 textarea {
   padding: 1.2rem;
   background-color: #232220;
@@ -47,6 +70,7 @@ textarea {
 textarea:focus {
   border: 1px solid #01a8b3;
 }
+
 button {
   width: 10rem;
   height: 3rem;

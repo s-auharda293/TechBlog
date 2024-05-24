@@ -1,0 +1,84 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        title Blog Ahead
+        link(rel='stylesheet', href='/css/style.css')
+        link(rel='preconnect', href='https://fonts.googleapis.com')
+        link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
+        link(rel='icon', href='/img/logos/logo.png')
+        link(rel='stylesheet', href='/css/addBlog.css')
+        link(href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap', rel='stylesheet')
+        style.
+    body
+        nav
+            .nav--left
+                .logo
+                    img(src='/img/logos/logo.png', alt='logo')
+                p
+                    | TechBlog
+                    span.period .
+            .nav--right
+                a(href='/views/') Home
+                a(href='/views/blogs') Blog
+                a(href='/views/login') Log In
+                a.sign-up(href='/views/signup') Sign Up
+        main
+            p.site-heading Create Your Blog
+            form.create-blog
+                label(for='title') Title
+                input#title(type='text', placeholder='Title')
+                label(for='tag') Tags
+                input#tag(type='text', placeholder='Tag')
+                label(for='content') Content
+                textarea#content(name='', rows='8', cols='30', placeholder='Write Content Here')
+                label(for='photo') Upload Image
+                label.file-upload-btn(for='photo') Choose File
+                input#photo(type='file', name='photo', onchange='displayFileName()')
+                #file-name
+                button(type='submit') Submit
+        footer
+            .footer--left
+                p
+                    | TechBlog
+                    span.period .
+            .footer--right
+                .col
+                    a(href='#')
+                        ion-icon(name='accessibility-outline')
+                        | Home
+                    a(href='#')
+                        ion-icon(name='log-in-outline')
+                        | SignUp
+                    a(href='#')
+                        ion-icon(name='log-in-outline')
+                        | LogIn
+                    a(href='#')
+                        ion-icon(name='clipboard-outline')
+                        | Blog
+                .col
+                    a(href='#')
+                        ion-icon(name='logo-instagram')
+                        | Instagram
+                    a(href='#')
+                        ion-icon(name='logo-twitter')
+                        | X
+                    a(href='#')
+                        ion-icon(name='logo-linkedin')
+                        | LinkedIn
+                    a(href='#')
+                        ion-icon(name='logo-facebook')
+                        | Facebook
+        script(type='module', src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js')
+        script(nomodule='', src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js')
+        script.
+            function displayFileName() {
+            const fileInput = document.getElementById("photo");
+            const fileNameDisplay = document.getElementById("file-name");
+            if (fileInput.files.length > 0) {
+            fileNameDisplay.textContent = fileInput.files[0].name;
+            } else {
+            fileNameDisplay.textContent = "";
+            }
+            }

@@ -35,6 +35,9 @@
       <form class="create-blog">
         <label for="title">Title</label>
         <input type="text" placeholder="Title" id="title" />
+        <label for="tag">Tags</label>
+        <input type="text" placeholder="Tag" id="tag" />
+
         <label for="content">Content</label>
         <textarea
           name=""
@@ -43,6 +46,16 @@
           cols="30"
           placeholder="Write Content Here"
         ></textarea>
+        <label for="photo">Upload Image</label>
+        <label for="photo" class="file-upload-btn">Choose File</label>
+        <input
+          type="file"
+          name="photo"
+          id="photo"
+          onchange="displayFileName()"
+        />
+        <div id="file-name"></div>
+
         <button type="submit">Submit</button>
       </form>
     </main>
@@ -73,5 +86,17 @@
       nomodule
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
     ></script>
+    <script>
+      function displayFileName() {
+        const fileInput = document.getElementById("photo");
+        const fileNameDisplay = document.getElementById("file-name");
+
+        if (fileInput.files.length > 0) {
+          fileNameDisplay.textContent = fileInput.files[0].name;
+        } else {
+          fileNameDisplay.textContent = "";
+        }
+      }
+    </script>
   </body>
 </html>
