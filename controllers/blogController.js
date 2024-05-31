@@ -1,99 +1,56 @@
 const Blog = require("./../models/blogModel");
+const catchAsync = require("./../utils/catchAsync");
 
-exports.getAllBlogs = async (req, res) => {
-  try {
-    const blogs = await Blog.find();
-    res.status(200).json({
-      message: "All Blogs returned",
-      blogs,
-      length: blogs.length,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      status: "error",
-      message: err._message,
-    });
-  }
-};
+exports.getAllBlogs = catchAsync(async (req, res) => {
+  const blogs = await Blog.find();
+  res.status(200).json({
+    message: "All Blogs returned",
+    blogs,
+    length: blogs.length,
+  });
+});
 
-exports.getBlog = async (req, res) => {
-  try {
-    const blog = await Blog.findById(req.params.id);
-    res.status(200).json({
-      blog: blog,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      status: "error",
-      message: err._message,
-    });
-  }
-};
+exports.getBlog = catchAsync(async (req, res) => {
+  const blog = await Blog.findById(req.params.id);
+  res.status(200).json({
+    blog: blog,
+  });
+});
 
-exports.createBlog = async (req, res) => {
-  try {
-    console.log(req.body);
-    await Blog.create(req.body);
-    res.status(201).json({
-      status: "success",
-      message: "Blog created successfully!",
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      status: "error",
-      message: err._message,
-    });
-  }
-};
+exports.createBlog = catchAsync(async (req, res) => {
+  console.log(req.body);
+  await Blog.create(req.body);
+  res.status(201).json({
+    status: "success",
+    message: "Blog created successfully!",
+  });
+});
 
-exports.updateBlog = async (req, res, next) => {
-  try {
-    await Blog.findByIdAndUpdate(req.params.id, req.body, {
-      runValidators: true,
-    });
+exports.updateBlog = catchAsync(async (req, res, next) => {
+  await Blog.findByIdAndUpdate(req.params.id, req.body, {
+    runValidators: true,
+  });
 
-    res.status(200).json({
-      status: "success",
-      message: "Blog Successfully Updated",
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      status: "fail",
-      message: err._message,
-    });
-  }
-  next();
-};
+  res.status(200).json({
+    status: "success",
+    message: "Blog Successfully Updated",
+  });
+});
 
-exports.deleteBlog = async (req, res) => {
-  try {
-    const blog = await Blog.findByIdAndDelete(req.params.id);
-    res.status(200).json({
-      status: "success",
-      message: "Blog deleted Successfully!",
-      blog,
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      status: "fail",
-      message: "Something Went Wrong!!!💥",
-    });
-  }
-};
-exports.getLatestSixBlogs = async (req, res) => {
+exports.deleteBlog = catchAsync(async (req, res) => {
+  const blog = await Blog.findByIdAndDelete(req.params.id);
+  res.status(200).json({
+    status: "success",
+    message: "Blog deleted Successfully!",
+    blog,
+  });
+});
+
+exports.getLatestSixBlogs = catchAsync(async (req, res) => {
   //   console.log(req.query);
   const sixBlog = await Blog.find().sort({ createdAt: -1 }).limit(6);
-  try {
-    res.status(200).json({
-      blog: sixBlog,
-      length: sixBlog.length,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
+  res.status(200).json({
+    blog: sixBlog,
+    length: sixBlog.length,
+  });
+});
