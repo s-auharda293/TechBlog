@@ -246,7 +246,6 @@ nav {
   margin-bottom: 1.2rem;
 }
 .subscribe-form {
-  position: relative;
   width: 80%;
   margin: 0 auto;
 }
@@ -278,10 +277,6 @@ nav {
 }
 
 .subscribe-button {
-  position: absolute;
-  top: 2.56rem;
-  left: 68rem;
-  transform: translateY(-50%);
   height: 3.2rem;
   background-color: #01a8b3;
   border-radius: 10rem;
@@ -289,6 +284,8 @@ nav {
   width: 9rem;
   padding: 0.4rem;
   color: #f4f4e4;
+  margin-left: 1rem;
+  margin-top: 1rem;
 }
 .subscribe-button:hover {
   cursor: pointer;

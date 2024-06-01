@@ -22,8 +22,9 @@ exports.signUp = catchAsync(async (req, res, next) => {
     password,
     passwordConfirm,
   });
+  const id = newUser._id;
 
-  const token = jwt.sign({ newUser }, process.env.JWT_SECRET, {
+  const token = jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 
@@ -43,6 +44,42 @@ exports.signUp = catchAsync(async (req, res, next) => {
     status: "success",
     message: "User created!",
     newUser,
+    token,
+  });
+});
+
+exports.logIn = catchAsync(async (req, res, next) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return next(new AppError("Please enter your email and password!", 400));
+  }
+
+  const user = await User.findOne({ email }).select("+password");
+
+  if (!user || !(await user.comparePassword(password, user.password))) {
+    return next(new AppError("Incorrect email or password", 401));
+  }
+
+  const id = user._id;
+
+  const token = jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
+
+  const cookieOptions = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+  };
+
+  res.cookie("jwt", token, cookieOptions);
+
+  res.status(200).json({
+    status: "success",
+    message: "User Logged in successfully",
     token,
   });
 });
