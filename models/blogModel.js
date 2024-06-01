@@ -1,9 +1,3 @@
-// title: String, required
-// content: String, required (body of the blog post)
-// author: ObjectId (references User), required
-// tags: [String] (array of tags/keywords)
-// createdAt: Date, default to current date
-// updatedAt: Date, default to current date
 // comments: [ObjectId] (references Comment)
 const mongoose = require("mongoose");
 
