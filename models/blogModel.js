@@ -27,7 +27,12 @@ const blogSchema = new mongoose.Schema(
       required: [true, "A blog must have content"],
       minlength: [30, "A blog must have more than or equal to 30 characters"],
     },
-    // author: {},
+    author: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+      required: [true, "Blog must belong to a user"],
+    },
+
     tags: { type: String },
     createdAt: {
       type: Date,
@@ -43,6 +48,7 @@ const blogSchema = new mongoose.Schema(
   {
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
+    timestamps: true,
   }
 );
 

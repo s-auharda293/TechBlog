@@ -103,7 +103,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   console.log(decoded);
 
   const currentUser = await User.findById(decoded.id);
-  console.log(user);
+  // console.log(currentUser);
 
   if (!currentUser) {
     return next(
