@@ -2,6 +2,7 @@ const AppError = require("./../utils/AppError");
 const User = require("./../models/userModel");
 const catchAsync = require("./../utils/catchAsync");
 const jwt = require("jsonwebtoken");
+const { findById } = require("../models/blogModel");
 
 exports.signUp = catchAsync(async (req, res, next) => {
   const { name, email, password, passwordConfirm } = req.body;
@@ -82,4 +83,35 @@ exports.logIn = catchAsync(async (req, res, next) => {
     message: "User Logged in successfully",
     token,
   });
+});
+
+exports.protect = catchAsync(async (req, res, next) => {
+  let token;
+  if (req.cookies) {
+    token = req.cookies.jwt;
+  }
+  // console.log(req.cookies);
+
+  if (!token) {
+    return next(
+      new AppError("You are not logged in! Please login to get access.", 401)
+    );
+  }
+
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+  console.log(decoded);
+
+  const currentUser = await User.findById(decoded.id);
+  console.log(user);
+
+  if (!currentUser) {
+    return next(
+      new AppError("The user belonging to this token no longer exists.", 401)
+    );
+  }
+
+  req.user = currentUser;
+
+  next();
 });

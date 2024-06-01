@@ -1,11 +1,12 @@
 const express = require("express");
 const blogController = require("../controllers/blogController");
+const authController = require("./../controllers/authController");
 
 const router = express.Router();
 
 router
   .route("/")
-  .get(blogController.getAllBlogs)
+  .get(authController.protect, blogController.getAllBlogs)
   .post(blogController.createBlog);
 
 router.route("/latest-6-blogs").get(blogController.getLatestSixBlogs);
