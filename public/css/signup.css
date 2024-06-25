@@ -88,6 +88,7 @@ nav {
   padding: 0.4rem 1.6rem;
   border-radius: 0.8rem;
   transition: all 0.3s;
+  font-size: 1.6rem;
 }
 .nav--right a:link,
 .nav--right a:visited {
@@ -158,6 +159,7 @@ input {
   outline: none;
   border: 1px solid transparent !important;
   color: #f4f4e4 !important;
+  font-size: 1.4rem !important ;
 }
 input:focus {
   border: 1px solid #01a8b3 !important;

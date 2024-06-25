@@ -6,14 +6,15 @@ main {
   color: #f4f4e4;
   font-size: 2.4rem;
   text-transform: uppercase;
+  margin-bottom: 1.2rem;
 }
-
-.create-blog {
+#create-blog {
   display: flex;
   flex-direction: column;
   width: 40%;
   margin: 0 auto;
 }
+
 label {
   font-size: 1.6rem;
   margin-top: 2.4rem;

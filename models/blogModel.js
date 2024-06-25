@@ -21,11 +21,11 @@ const blogSchema = new mongoose.Schema(
       required: [true, "A blog must have content"],
       minlength: [30, "A blog must have more than or equal to 30 characters"],
     },
-    author: {
-      type: mongoose.Schema.ObjectId,
-      ref: "User",
-      required: [true, "Blog must belong to a user"],
-    },
+    // author: {
+    //   type: mongoose.Schema.ObjectId,
+    //   ref: "User",
+    //   required: [true, "Blog must belong to a user"],
+    // },
 
     tags: { type: String },
     createdAt: {

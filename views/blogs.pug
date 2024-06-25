@@ -24,109 +24,23 @@ html(lang='en')
             .nav--right
                 a(href='/views') Home
                 a(href='/views/blogs') Blog
+                a(href='/views/createBlog') Add Blog
                 a.sign-up#logout(style={cursor:'pointer'}) Log Out
         .main
             .blogs.container
                 p.blog-section-heading All Posts
                 .grid.grid--3-cols
-                    .blog-post
-                        .blog-post-img
-                            img(src='/img/pexels-agk42-2599244.jpg', alt='blog-post-1')
-                        p Cyber Security
-                        h3 The Ever-Evolving Cybersecurity Landscape
-                        .blog-date-read-info
-                            p June 26,2023
-                            p 5 min read
+                    each blog in blogs
+                        .blog-post
+                            .blog-post-img
+                                img(src=`/img/${blog.image}` alt=`${blog.image}`)
+                            p #{blog.tags?blog.tags.split(",")[0]:"No Tag"}
+                            h3 #{blog.title.length > 20 ? blog.title.slice(0, 25) + "..." : blog.title}
+                            .blog-date-read-info
+                                p #{blog.createdAt.toISOString().split("T")[0]}
+                                p 5 min read
                             
-                    .blog-post
-                        .blog-post-img
-                            img(src='/img/pexels-freestockpro-319968.jpg', alt='blog-post-1')
-                        p Cyber Security
-                        h3 The Ever-Evolving Cybersecurity Landscape
-                        .blog-date-read-info
-                            p June 26,2023
-                            p 5 min read
-                    .blog-post
-                        .blog-post-img
-                            img(src='/img/pexels-freestockpro-319968.jpg', alt='blog-post-1')
-                        p Cyber Security
-                        h3 The Ever-Evolving Cybersecurity Landscape
-                        .blog-date-read-info
-                            p June 26,2023
-                            p 5 min read 
-                    .blog-post
-                        .blog-post-img
-                            img(src='/img/pexels-freestockpro-319968.jpg', alt='blog-post-1')
-                        p Cyber Security
-                        h3 The Ever-Evolving Cybersecurity Landscape
-                        .blog-date-read-info
-                            p June 26,2023
-                            p 5 min read
-                    .blog-post
-                        .blog-post-img
-                            img(src='/img/pexels-freestockpro-319968.jpg', alt='blog-post-1')
-                        p Cyber Security
-                        h3 The Ever-Evolving Cybersecurity Landscape
-                        .blog-date-read-info
-                            p June 26,2023
-                            p 5 min read
-                    .blog-post
-                        .blog-post-img
-                            img(src='/img/pexels-freestockpro-319968.jpg', alt='blog-post-1')
-                        p Cyber Security
-                        h3 The Ever-Evolving Cybersecurity Landscape
-                        .blog-date-read-info
-                            p June 26,2023
-                            p 5 min read
-                    .blog-post
-                        .blog-post-img
-                            img(src='/img/pexels-freestockpro-319968.jpg', alt='blog-post-1')
-                        p Cyber Security
-                        h3 The Ever-Evolving Cybersecurity Landscape
-                        .blog-date-read-info
-                            p June 26,2023
-                            p 5 min read
-                    .blog-post
-                        .blog-post-img
-                            img(src='/img/pexels-freestockpro-319968.jpg', alt='blog-post-1')
-                        p Cyber Security
-                        h3 The Ever-Evolving Cybersecurity Landscape
-                        .blog-date-read-info
-                            p June 26,2023
-                            p 5 min read
                     
-                    .blog-post
-                        .blog-post-img
-                            img(src='/img/pexels-googledeepmind-17483848.jpg', alt='blog-post-1')
-                        p Cyber Security
-                        h3 The Ever-Evolving Cybersecurity Landscape
-                        .blog-date-read-info
-                            p June 26,2023
-                            p 5 min read
-                    .blog-post
-                        .blog-post-img
-                            img(src='/img/pexels-googledeepmind-18069488.jpg', alt='blog-post-1')
-                        p Cyber Security
-                        h3 The Ever-Evolving Cybersecurity Landscape
-                        .blog-date-read-info
-                            p June 26,2023
-                            p 5 min read
-                    .blog-post
-                        .blog-post-img
-                            img(src='/img/pexels-with-cloudd-521356380-23709323.jpg', alt='blog-post-1')
-                        p Cyber Security
-                        h3 The Ever-Evolving Cybersecurity Landscape
-                        .blog-date-read-info
-                            p June 26,2023
-                            p 5 min read
-                    .blog-post
-                        .blog-post-img
-                            img(src='/img/pexels-junior-teixeira-1064069-2047905.jpg', alt='blog-post-1')
-                        p Cyber Security
-                        h3 The Ever-Evolving Cybersecurity Landscape
-                        .blog-date-read-info
-                            p June 26,2023
-                            p 5 min read
         footer
             .footer--left
                 p

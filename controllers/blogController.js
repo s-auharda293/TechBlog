@@ -1,14 +1,14 @@
 const Blog = require("./../models/blogModel");
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/AppError");
+const multer = require("multer");
+const sharp = require("sharp");
 
 exports.getAllBlogs = catchAsync(async (req, res) => {
   const blogs = await Blog.find();
-  res.status(200).json({
-    message: "All Blogs returned",
-    blogs,
-    length: blogs.length,
-  });
+  res
+    .status(200)
+    .render("blogs", { title: "Blog Ahead", blogs, length: blogs.length });
 });
 
 exports.getBlog = catchAsync(async (req, res) => {
@@ -18,11 +18,41 @@ exports.getBlog = catchAsync(async (req, res) => {
   });
 });
 
+const multerStorage = multer.memoryStorage();
+
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith("image")) {
+    cb(null, true);
+  } else {
+    cb(new AppError("Not an image! Please upload only images.", 400), false);
+  }
+};
+
+const upload = multer({ storage: multerStorage, fileFilter: multerFilter });
+
+exports.uploadPhoto = upload.single("photo");
+
+exports.resizePhoto = catchAsync(async (req, res, next) => {
+  if (!req.file) return next();
+
+  req.file.filename = `blog-${Date.now()}.jpeg`;
+
+  await sharp(req.file.buffer)
+    .resize(4000, 4000)
+    .toFormat("jpeg")
+    .jpeg({ quality: 90 })
+    .toFile(`public/img/${req.file.filename}`);
+  next();
+});
+
 exports.createBlog = catchAsync(async (req, res) => {
-  const author = req.user._id;
+  // const author = req.user._id;
   const { title, content, tags } = req.body;
 
-  await Blog.create({ title, content, tags, author });
+  const image = req.file.filename;
+
+  // await Blog.create({ title, content, tags, author, image });
+  await Blog.create({ title, content, tags, image });
 
   res.status(201).json({
     status: "success",
@@ -76,9 +106,13 @@ exports.deleteBlog = catchAsync(async (req, res, next) => {
 
 exports.getLatestSixBlogs = catchAsync(async (req, res) => {
   //   console.log(req.query);
-  const sixBlog = await Blog.find().sort({ createdAt: -1 }).limit(6);
-  res.status(200).json({
-    blog: sixBlog,
-    length: sixBlog.length,
+  const sixBlog = await Blog.find().sort({ createdAt: -1 }).limit(6).lean();
+
+  const formattedBlogs = sixBlog.map((blog) => ({
+    ...blog,
+    createdAt: blog.createdAt.toISOString().split("T")[0],
+  }));
+  res.status(200).render("home", {
+    blogs: formattedBlogs,
   });
 });
