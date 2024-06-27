@@ -1,10 +1,12 @@
 const fs = require("fs");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const Blog = require("./../../models/blogModel");
-const User = require("./../../models/userModel");
+const Blog = require("../../models/blogModel");
+const User = require("../../models/userModel");
 
-dotenv.config({ path: "./../../config.env" });
+dotenv.config({ path: "./config.env" });
+
+// console.log(process.env);
 
 const DB = process.env.DATABASE.replace(
   "<PASSWORD>",
@@ -17,11 +19,15 @@ mongoose
     console.log("Database connected");
   })
   .catch((err) => {
-    console.err("Database connection unsuccessful!");
+    console.error("Database connection unsuccessful!");
   });
 
-const blogs = JSON.parse(fs.readFileSync("./blogs.json", "utf-8"));
-const users = JSON.parse(fs.readFileSync("./users.json", "utf-8"));
+const blogs = JSON.parse(
+  fs.readFileSync("./dev-data/data/blogs.json", "utf-8")
+);
+const users = JSON.parse(
+  fs.readFileSync("./dev-data/data/users.json", "utf-8")
+);
 
 // console.log(process.argv[2]);
 

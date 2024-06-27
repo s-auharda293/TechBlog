@@ -1,7 +1,12 @@
 extends base
 
-block head
+block headLink
     link(rel='stylesheet' href='/css/addBlog.css')
+
+block headerLinks 
+        a(href='/views') Home
+        a(href='/views/blogs') Blog
+        a.sign-up#logout(style={cursor:'pointer'}) Log Out
 
 block content
     main
@@ -52,8 +57,9 @@ block content
                     body: form,
                     credentials: 'include',
                 });
+                console.log(response)
                 const data = await response.json();
-                console.log(data);
+                console.log(data)
                 if (data.status === 'success') {
                     window.location.href = '/views/blogs';
                 } else {

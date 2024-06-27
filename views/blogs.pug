@@ -1,31 +1,30 @@
-doctype html
-html(lang='en')
-    head
-        meta(charset='UTF-8')
-        meta(name='viewport', content='width=device-width, initial-scale=1.0')
-        title Blog Ahead
-        link(rel='stylesheet', href='/css/style.css')
-        link(rel='preconnect', href='https://fonts.googleapis.com')
-        link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
-        link(rel='icon', href='/img/logos/logo.png')
-        link(href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap', rel='stylesheet')
+extends base
+
+block headLink
         style.
             .main {
             margin: 10rem 0;
             }
-    body
-        nav
-            .nav--left
-                .logo
-                    img(src='/img/logos/logo.png', alt='logo')
-                p
-                    | TechBlog
-                    span.period .
-            .nav--right
-                a(href='/views') Home
-                a(href='/views/blogs') Blog
-                a(href='/views/createBlog') Add Blog
-                a.sign-up#logout(style={cursor:'pointer'}) Log Out
+            .details{
+                font-size:1.6rem;
+                background-color:#01a8b3;
+                color: #f4f4e4;
+                padding:0.8rem;
+                border-radius:5px;
+            }
+            .details:hover{
+                cursor:pointer;
+            }
+            a.details:link,a.details:active,a.details:visited{
+                text-decoration:none;
+
+            }
+block headerLinks 
+    a(href='/views') Home
+    a(href='/views/blogs') Blog
+    a(href='/views/createBlog') Add Blog
+    a.sign-up#logout(style={cursor:'pointer'}) Log Out
+block content
         .main
             .blogs.container
                 p.blog-section-heading All Posts
@@ -38,41 +37,8 @@ html(lang='en')
                             h3 #{blog.title.length > 20 ? blog.title.slice(0, 25) + "..." : blog.title}
                             .blog-date-read-info
                                 p #{blog.createdAt.toISOString().split("T")[0]}
-                                p 5 min read
-                            
-                    
-        footer
-            .footer--left
-                p
-                    | TechBlog
-                    span.period .
-            .footer--right
-                .col
-                    a(href='views/home')
-                        ion-icon(name='accessibility-outline')
-                        | Home
-                    a(href='views/signup')
-                        ion-icon(name='log-in-outline')
-                        | SignUp
-                    a(href='views/login')
-                        ion-icon(name='log-in-outline')
-                        | LogIn
-                    a(href='views/blogs')
-                        ion-icon(name='clipboard-outline')
-                        | Blog
-                .col
-                    a(href='#')
-                        ion-icon(name='logo-instagram')
-                        | Instagram
-                    a(href='#')
-                        ion-icon(name='logo-twitter')
-                        | X
-                    a(href='#')
-                        ion-icon(name='logo-linkedin')
-                        | LinkedIn
-                    a(href='#')
-                        ion-icon(name='logo-facebook')
-                        | Facebook
+                                a.details(href=`/views/viewBlog/${blog.slug}`) Details
+        
         script(type='module', src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js')
         script(nomodule='', src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js')
         script.

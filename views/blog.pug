@@ -1,0 +1,21 @@
+extends base
+
+block headLink 
+    link(rel='stylesheet' href='/css/blog.css')
+block headerLinks
+    a(href='/views/blogs') Blog
+    a.sign-up#logout(style={cursor:'pointer'}) Log Out
+block content
+        main.single-blog
+            h1=`${blog.title}`
+            .info
+                -const options={day:'numeric',month:'short',year:'numeric'}
+                -const date=blog.createdAt.toLocaleDateString('en-US',options)
+                p=`Created at: ${date}`
+                each tag in blog.tags.split(',')
+                    p=`#${tag}`
+            img(src=`/img/${blog.image}`, alt=`${blog.title}`)
+            .content
+                p=blog.content
+                
+        

@@ -1,5 +1,6 @@
 // comments: [ObjectId] (references Comment)
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 
 const blogSchema = new mongoose.Schema(
   {
@@ -8,7 +9,7 @@ const blogSchema = new mongoose.Schema(
       required: [true, "A blog must have a title"],
       unique: true,
       maxlength: [
-        50,
+        100,
         "A blog title must have less than or equal to 50 characters",
       ],
       minlength: [
@@ -26,7 +27,7 @@ const blogSchema = new mongoose.Schema(
     //   ref: "User",
     //   required: [true, "Blog must belong to a user"],
     // },
-
+    slug: String,
     tags: { type: String },
     createdAt: {
       type: Date,
@@ -46,6 +47,10 @@ const blogSchema = new mongoose.Schema(
   }
 );
 
-const Blog = mongoose.model("Blog", blogSchema);
+blogSchema.pre("save", function (next) {
+  this.slug = slugify(this.title, { lower: true });
+  next();
+});
 
+const Blog = mongoose.model("Blog", blogSchema);
 module.exports = Blog;

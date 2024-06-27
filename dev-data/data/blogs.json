@@ -5,7 +5,7 @@
     "tags": "AI, Healthcare, Technology",
     "createdAt": "2024-05-20T12:00:00.000Z",
     "updatedAt": "2024-05-20T12:00:00.000Z",
-    "image": ["image1.jpg"]
+    "image": ["image-1.jpg"]
   },
   {
     "title": "5G Technology: A Game Changer in Mobile Communication",
@@ -13,7 +13,7 @@
     "tags": "5G, Mobile, Communication",
     "createdAt": "2024-05-19T10:30:00.000Z",
     "updatedAt": "2024-05-19T10:30:00.000Z",
-    "image": ["image2.jpg"]
+    "image": ["image-2.jpg"]
   },
   {
     "title": "The Rise of Blockchain Technology: Transforming Industries",
@@ -21,7 +21,7 @@
     "tags": "Blockchain, Technology, Finance",
     "createdAt": "2024-05-18T15:45:00.000Z",
     "updatedAt": "2024-05-18T15:45:00.000Z",
-    "image": ["image3.jpg"]
+    "image": ["image-3.jpg"]
   },
   {
     "title": "Artificial Intelligence in Customer Service: Enhancing User Experience",
@@ -29,7 +29,7 @@
     "tags": "AI, Customer Service, User Experience",
     "createdAt": "2024-05-17T09:00:00.000Z",
     "updatedAt": "2024-05-17T09:00:00.000Z",
-    "image": ["image4.jpg"]
+    "image": ["image-4.jpg"]
   },
   {
     "title": "The Potential of Virtual Reality in Education",
@@ -37,7 +37,7 @@
     "tags": "Virtual Reality, Education, Technology",
     "createdAt": "2024-05-16T14:20:00.000Z",
     "updatedAt": "2024-05-16T14:20:00.000Z",
-    "image": ["image5.jpg"]
+    "image": ["image-5.jpg"]
   },
   {
     "title": "Cybersecurity Trends: Addressing Emerging Threats",
@@ -45,7 +45,7 @@
     "tags": "Cybersecurity, Technology, Threats",
     "createdAt": "2024-05-15T11:10:00.000Z",
     "updatedAt": "2024-05-15T11:10:00.000Z",
-    "image": ["image6.jpg"]
+    "image": ["image-6.jpg"]
   },
   {
     "title": "The Impact of Internet of Things (IoT) on Smart Cities",
@@ -53,7 +53,7 @@
     "tags": "IoT, Smart Cities, Technology",
     "createdAt": "2024-05-14T08:40:00.000Z",
     "updatedAt": "2024-05-14T08:40:00.000Z",
-    "image": ["image7.jpg"]
+    "image": ["image-4.jpg"]
   },
   {
     "title": "Augmented Reality: Enhancing Retail Experiences",
@@ -61,7 +61,7 @@
     "tags": "Augmented Reality, Retail, Technology",
     "createdAt": "2024-05-13T16:55:00.000Z",
     "updatedAt": "2024-05-13T16:55:00.000Z",
-    "image": ["image8.jpg"]
+    "image": ["image-1.jpg"]
   },
   {
     "title": "The Evolution of Cloud Computing: Trends and Innovations",
@@ -69,6 +69,6 @@
     "tags": "Cloud Computing, Technology, Innovations",
     "createdAt": "2024-05-12T12:25:00.000Z",
     "updatedAt": "2024-05-12T12:25:00.000Z",
-    "image": ["image9.jpg"]
+    "image": ["image-5.jpg"]
   }
 ]
