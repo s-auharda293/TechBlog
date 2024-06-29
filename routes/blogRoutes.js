@@ -4,12 +4,15 @@ const authController = require("./../controllers/authController");
 
 const router = express.Router();
 
-router.route("/").get(authController.protect, blogController.getAllBlogs).post(
-  blogController.uploadPhoto,
-  blogController.resizePhoto,
-  // authController.protect,
-  blogController.createBlog
-);
+router
+  .route("/")
+  .get(authController.protect, blogController.getAllBlogs)
+  .post(
+    blogController.uploadPhoto,
+    blogController.resizePhoto,
+    authController.protect,
+    blogController.createBlog
+  );
 
 router.route("/latest-6-blogs").get(blogController.getLatestSixBlogs);
 
