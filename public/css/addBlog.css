@@ -1,5 +1,6 @@
 main {
   margin: 6rem 0;
+  position: relative;
 }
 .site-heading {
   text-align: center;
@@ -83,4 +84,12 @@ button {
 }
 button:hover {
   cursor: pointer;
+}
+
+.background-img {
+  width: 200px;
+  height: 500px;
+  position: absolute;
+  top: -99px;
+  left: 60%;
 }

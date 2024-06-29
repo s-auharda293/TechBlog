@@ -52,6 +52,7 @@ exports.createBlog = catchAsync(async (req, res) => {
   const image = req.file.filename;
 
   // await Blog.create({ title, content, tags, author, image });
+  // await Blog.create({ title, content, tags, image });
   await Blog.create({ title, content, tags, image });
 
   res.status(201).json({

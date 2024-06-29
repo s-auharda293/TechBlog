@@ -20,7 +20,7 @@ const blogSchema = new mongoose.Schema(
     content: {
       type: String,
       required: [true, "A blog must have content"],
-      minlength: [30, "A blog must have more than or equal to 30 characters"],
+      minlength: [10, "A blog must have more than or equal to 30 characters"],
     },
     // author: {
     //   type: mongoose.Schema.ObjectId,
@@ -37,7 +37,7 @@ const blogSchema = new mongoose.Schema(
       type: Date,
       default: Date.now(),
     },
-    image: { type: [String], default: "pexels-agk42-2599244.jpg" },
+    image: { type: [String] },
     // comments
   },
   {

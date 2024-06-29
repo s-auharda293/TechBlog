@@ -10,6 +10,7 @@ block headerLinks
 
 block content
     main
+        img(class='background-img' src="./../img/take-note.svg", alt="", srcset="")
         p.site-heading Create Your Blog
         form#create-blog
             label(for='title') Title
@@ -27,6 +28,7 @@ block content
 
     script(type='module', src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js')
     script(nomodule='', src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js')
+    script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
     script.
         function displayFileName() {
             const fileInput = document.getElementById("photo");
@@ -37,35 +39,70 @@ block content
                 fileNameDisplay.textContent = "";
             }
         }
-
-        document.getElementById('submit').addEventListener('click', async (event) => {
-            event.preventDefault(); // Prevent default form submission
-            const dataForm=document.getElementById('create-blog');
-            const title = document.getElementById('title').value;
-            const tags = document.getElementById('tags').value;
-            const content = document.getElementById('content').value;
-            
+        document.getElementById("create-blog").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const title = document.getElementById("title").value;
+            const tags = document.getElementById("tags").value;
+            const content = document.getElementById("content").value;
+            const photo = document.getElementById("photo").files[0];
+            console.log(title, tags, content);
+            console.log(photo);
             const form = new FormData();
-            form.append('title', title);
-            form.append('tags', tags);
-            form.append('content', content);
-            form.append('photo', document.getElementById("photo").files[0]);
-
+            form.append("title", title);
+            form.append("tags", tags);
+            form.append("content", content);
+            form.append("photo", photo);
             try {
-                const response = await fetch('http://127.0.0.1:3000/api/v1/blogs', {
-                    method: 'POST',
-                    body: form,
-                    credentials: 'include',
-                });
-                console.log(response)
-                const data = await response.json();
-                console.log(data)
-                if (data.status === 'success') {
-                    window.location.href = '/views/blogs';
-                } else {
-                    alert(data.message);
-                }
+            const response = await axios.post(
+            "http://127.0.0.1:3000/api/v1/blogs",
+            form,
+            {
+            headers: {
+            "Content-Type": "multipart/form-data",
+            },
+            }
+            );
+            console.log(response.data);
+            if (response.data.status === "success") {
+            window.location.href = "http://127.0.0.1:3000/views/blogs";
+            }
+            alert(response.data.message);
             } catch (error) {
-                console.error('Error:', error);
+            console.error("Error creating blog:", error);
+            alert("Error creating blog", error);
             }
         });
+
+        //- document.getElementById('create-blog').addEventListener('submit', async (event) => {
+        //-     event.preventDefault(); // Prevent default form submission
+        //-     const title = document.getElementById('title').value;
+        //-     const tags = document.getElementById('tags').value;
+        //-     const content = document.getElementById('content').value;
+
+        //-     //- const body=JSON.stringify({title,tags,content})
+            
+        //-     const form = new FormData();
+        //-     form.append('title', title);
+        //-     form.append('tags', tags);
+        //-     form.append('content', content);
+        //-     form.append('photo', document.getElementById("photo").files[0]);
+
+        //-     try {
+        //-         const response = await fetch('http://127.0.0.1:3000/api/v1/blogs', {
+        //-             method: 'POST',
+        //-             body: form,
+        //-             //- credentials: 'include',
+        //-         });
+        //-         console.log(response)
+        //-         const data = await response.json();
+        //-         console.log(data)
+        //-         if (response.ok) {
+        //-             window.location.href = '/views/blogs';
+        //-         } else {
+        //-             alert('Error submitting blog');
+        //-         }
+        //-     } catch (error) {
+        //-         console.error('Error:', error);
+        //-         alert(error);
+        //-     }
+        //- });
