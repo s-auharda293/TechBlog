@@ -34,7 +34,7 @@ block content
         script(type='module' src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js')
         script(nomodule='' src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js')
         script. 
-            document.getElementById('submit-button').addEventListener('click',async(e)=>{
+            document.querySelector('.form-parent').addEventListener('submit',async(e)=>{
                 e.preventDefault();
                 const name=document.getElementById('name').value;
                 const email=document.getElementById('email').value;
@@ -42,23 +42,27 @@ block content
                 const passwordConfirm=document.getElementById('confirm-password').value;
 
                 const formData={name,email,password,passwordConfirm}
+                
+                try{
 
-                const apiURL='http://127.0.0.1:3000/api/v1/users/signup'
-                const response=await fetch(apiURL,{
+                const response=await fetch('/api/v1/users/signup',{
                     method:'POST',
+                    body:JSON.stringify(formData),
                     headers:{
-                    'Content-type':'application/json',
-                    },
-                    body:JSON.stringify(formData)
+                        'Content-Type':'application/json'
+                    }
                 })
-                const data=await(response.json())
+                const data=await response.json()
+                console.log(data)
                 if(data.status==='success'){
-                    window.location.href='/views/blogs'
+                    location.href='/views/blogs'
                 }
-                else{
+                if(data.status==='fail'){
                     alert(data.message)
                 }
-
+                }catch(err){
+                    console.log(err)
+                }
             })
 
-
+           

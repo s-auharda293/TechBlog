@@ -1,130 +1,86 @@
-// const AppError = require("./../utils/AppError");
-// const User = require("./../models/userModel");
-// const catchAsync = require("./../utils/catchAsync");
-// const jwt = require("jsonwebtoken");
-// const { findById } = require("../models/blogModel");
+const AppError = require("./../utils/AppError");
+const User = require("./../models/userModel");
+const catchAsync = require("./../utils/catchAsync");
+const jwt = require("jsonwebtoken");
 
-// exports.signUp = catchAsync(async (req, res, next) => {
-//   const { name, email, password, passwordConfirm } = req.body;
+const maxAge = 3 * 24 * 60 * 60;
 
-//   if (!name || !email || !password || !passwordConfirm) {
-//     return next(new AppError("Please fill in all details!", 400));
-//   }
+const generateToken = (id) => {
+  const token = jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: maxAge,
+  });
+  return token;
+};
 
-//   const user = await User.findOne({ email });
+exports.signUp = catchAsync(async (req, res, next) => {
+  const { name, email, password, passwordConfirm } = req.body;
 
-//   if (user) {
-//     return next(new AppError("This email has already been taken!", 400));
-//   }
+  if (!name || !email || !password || !passwordConfirm) {
+    return next(new AppError("Please fill in all details!", 400));
+  }
 
-//   const newUser = await User.create({
-//     name,
-//     email,
-//     password,
-//     passwordConfirm,
-//   });
-//   const id = newUser._id;
+  const user = await User.findOne({ email });
 
-//   const token = jwt.sign({ id }, process.env.JWT_SECRET, {
-//     expiresIn: process.env.JWT_EXPIRES_IN,
-//   });
+  if (user) {
+    return next(new AppError("This email has already been taken!", 400));
+  }
 
-//   const cookieOptions = {
-//     expires: new Date(
-//       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
-//     ),
-//     httpOnly: true,
-//   };
+  const newUser = await User.create({
+    name,
+    email,
+    password,
+    passwordConfirm,
+  });
+  //   const id = newUser._id;
+  const id = newUser._id;
+  const token = generateToken(id);
+  res.cookie("jwt", token, {
+    httpOnly: true,
+    maxAge: maxAge,
+  });
 
-//   res.cookie("jwt", token, cookieOptions);
+  newUser.password = undefined;
 
-//   newUser.password = undefined;
+  res.status(201).json({
+    status: "success",
+    message: "User created!",
+    user: id,
+    token,
+  });
+});
 
-//   res.status(201).json({
-//     status: "success",
-//     message: "User created!",
-//     newUser,
-//     token,
-//   });
-// });
+exports.logIn = catchAsync(async (req, res, next) => {
+  const { email, password } = req.body;
 
-// exports.logIn = catchAsync(async (req, res, next) => {
-//   const { email, password } = req.body;
+  if (!email || !password) {
+    return next(new AppError("Please enter your email and password!", 400));
+  }
 
-//   if (!email || !password) {
-//     return next(new AppError("Please enter your email and password!", 400));
-//   }
+  const user = await User.findOne({ email }).select("+password");
 
-//   const user = await User.findOne({ email }).select("+password");
+  if (!user || !(await user.comparePassword(password, user.password))) {
+    return next(new AppError("Incorrect email or password", 401));
+  }
 
-//   if (!user || !(await user.comparePassword(password, user.password))) {
-//     return next(new AppError("Incorrect email or password", 401));
-//   }
+  const id = user._id;
 
-//   const id = user._id;
+  const token = generateToken(id);
 
-//   const token = jwt.sign({ id }, process.env.JWT_SECRET, {
-//     expiresIn: process.env.JWT_EXPIRES_IN,
-//   });
+  res.cookie("jwt", token, {
+    httpOnly: true,
+    maxAge: maxAge * 1000,
+  });
 
-//   const cookieOptions = {
-//     expires: new Date(
-//       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
-//     ),
-//     httpOnly: true,
-//     secure: process.env.NODE_ENV === "production",
-//   };
+  res.status(200).json({
+    status: "success",
+    message: "User Logged in successfully",
+    user: id,
+  });
+});
 
-//   res.cookie("jwt", token, cookieOptions);
-
-//   res.status(200).json({
-//     status: "success",
-//     message: "User Logged in successfully",
-//     token,
-//   });
-// });
-
-// exports.protect = catchAsync(async (req, res, next) => {
-//   let token;
-//   if (req.cookies) {
-//     token = req.cookies.jwt;
-//   }
-//   console.log(req.cookies);
-
-//   if (!token) {
-//     return next(
-//       new AppError("You are not logged in! Please login to get access.", 401)
-//     );
-//   }
-
-//   const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-//   console.log(decoded);
-
-//   const currentUser = await User.findById(decoded.id);
-//   // console.log(currentUser);
-
-//   if (!currentUser) {
-//     return next(
-//       new AppError("The user beSlonging to this token no longer exists.", 401)
-//     );
-//   }
-
-//   req.user = currentUser;
-
-//   next();
-// });
-
-// exports.logOut = catchAsync(async (req, res, next) => {
-//   res.cookie("jwt", "loggedout", {
-//     expires: new Date(Date.now() + 1 * 1000),
-//     httpOnly: true,
-//   });
-//   // res.status(200).json({
-//   //   status: "success",
-//   //   message: "User successfully logged out",
-//   // });
-//   res.status(200).json({
-//     status: "success",
-//   });
-// });
+exports.logOut = catchAsync(async (req, res, next) => {
+  res.cookie("jwt", "", {
+    maxAge: 1,
+  });
+  res.redirect("/views");
+});
