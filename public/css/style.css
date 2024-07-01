@@ -334,3 +334,20 @@ footer {
 .footer--right a:active {
   color: #01a8b3;
 }
+
+.unauthorized {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 3rem;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  animation: unauthorised 5s infinite ease-in-out;
+}
+@keyframes unauthorised {
+  from {
+    text-shadow: -4px 9px 10px rgba(182, 24, 24, 0.6);
+  }
+  to {
+    text-shadow: 16px 10px 14px rgba(182, 24, 24, 1);
+  }
+}

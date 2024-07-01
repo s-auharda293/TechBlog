@@ -22,18 +22,19 @@ html(lang='en')
         script(nomodule='' src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js')
 
         script.
-            const apiURL='http://127.0.0.1:3000/api/v1/users/logout'
-            const logoutBtn=document.getElementById('logout')
-            logoutBtn.addEventListener('click',async(e)=>{
-                e.preventDefault();
-                const response=await fetch(apiURL,{
-                    method:'GET',
+                document.getElementById('logout').addEventListener('click',async(e)=>{
+                    //- console.log('clicked')
+                    e.preventDefault();
+                   const requestOptions = {
+                        method: "GET",
+                    };
+
+                    const response=await fetch("http://127.0.0.1:3000/api/v1/users/logout", requestOptions)   
+                    console.log(response)
+                    const data=await response.json()
+                    console.log(data)
+                    if(data.status==='success'){
+                        window.location.href="http://localhost:3000/views"
+                    }
                 })
-                const data=await response.json();
-                if(data.status='success'){
-                    alert(data.message)
-                }
-                setTimeout(()=>{
-                    window.location.href='/views'
-                },1000)
-            })
+                            

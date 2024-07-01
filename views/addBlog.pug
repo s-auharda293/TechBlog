@@ -28,7 +28,6 @@ block content
 
     script(type='module', src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js')
     script(nomodule='', src='https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js')
-    script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
     script.
         function displayFileName() {
             const fileInput = document.getElementById("photo");
@@ -53,24 +52,21 @@ block content
             form.append("content", content);
             form.append("photo", photo);
             try {
-            const response = await axios.post(
-            "http://127.0.0.1:3000/api/v1/blogs",
-            form,
-            {
-            headers: {
-            "Content-Type": "multipart/form-data",
-            },
-            credentials:'include'
-            }
-            );
-            console.log(response.data);
-            if (response.data.status === "success") {
+            const response = await fetch('/api/v1/blogs',{
+                method:'POST',
+                body:form,
+
+            })
+            const data=await response.json()
+            console.log(data)
+            if (data.status === "success") {
+            alert(data.message);
             window.location.href = "http://127.0.0.1:3000/views/blogs";
             }
-            alert(response.data.message);
-            } catch (error) {
-            console.error("Error creating blog:", error);
-            alert("Error creating blog", error);
+            }catch (error) {
+            console.log(error)
+            //- console.log(error.response.data.message)
+            alert(`${data.message}`);
             }
         });
 

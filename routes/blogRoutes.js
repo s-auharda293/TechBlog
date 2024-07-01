@@ -6,11 +6,10 @@ const router = express.Router();
 
 router
   .route("/")
-  .get(authController.protect, blogController.getAllBlogs)
+  .get(blogController.getAllBlogs)
   .post(
     blogController.uploadPhoto,
     blogController.resizePhoto,
-    authController.protect,
     blogController.createBlog
   );
 
@@ -18,8 +17,8 @@ router.route("/latest-6-blogs").get(blogController.getLatestSixBlogs);
 
 router
   .route("/:id")
-  .get(authController.protect, blogController.getBlog)
-  .patch(authController.protect, blogController.updateBlog)
-  .delete(authController.protect, blogController.deleteBlog);
+  .get(blogController.getBlog)
+  .patch(blogController.updateBlog)
+  .delete(blogController.deleteBlog);
 
 module.exports = router;
