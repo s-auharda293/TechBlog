@@ -2,9 +2,7 @@ extends base
 
 block headLink 
     link(rel='stylesheet' href='/css/blog.css')
-block headerLinks
-    a(href='/views/blogs') Blog
-    a.sign-up#logout(style={cursor:'pointer'}) Log Out
+    
 block content
         main.single-blog
             h1=`${blog.title}`

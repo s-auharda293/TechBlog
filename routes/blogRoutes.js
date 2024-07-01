@@ -1,12 +1,13 @@
 const express = require("express");
 const blogController = require("../controllers/blogController");
 const authController = require("./../controllers/authController");
+const { requireAuth } = require("./../middleware/authMiddleware");
 
 const router = express.Router();
 
+router.route("/", requireAuth, blogController.getAllBlogs);
 router
   .route("/")
-  .get(blogController.getAllBlogs)
   .post(
     blogController.uploadPhoto,
     blogController.resizePhoto,

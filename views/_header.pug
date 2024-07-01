@@ -7,4 +7,12 @@ nav
             span(class='period') .
 
     .nav--right
-        block headerLinks
+        if user
+            a(style=`color:#01a8b3;`)=`Welcome ${user.email}`
+            a(href='/views') Home
+            a(href='/views/blogs') Blog
+            a(href='/views/createBlog') Add Blog
+            a.sign-up#logout(style={cursor:'pointer'} href='/api/v1/users/logout') Log Out 
+        else 
+            a(href='/views/login') Log In
+            a.sign-up(href='/views/signup') Sign Up

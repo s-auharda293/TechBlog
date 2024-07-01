@@ -6,34 +6,11 @@ const multer = require("multer");
 const sharp = require("sharp");
 const jwt = require("jsonwebtoken");
 
-exports.getAllBlogs = catchAsync(async (req, res, next) => {
-  // const cookies = req.cookies;
-
-  // if (cookies.jwt) {
-  //   const token = cookies.jwt;
-  //   if (!token) {
-  //     return next(
-  //       new AppError("You are not logged in! Please login to get access.", 401)
-  //     );
-  //   }
-
-  //   const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-  //   console.log(decoded);
-
-  //   const currentUser = await User.findById(decoded.id);
-  //   // console.log(currentUser);
-
-  //   if (!currentUser) {
-  //     return next(new AppError("Please login to get access.", 401));
-  //   }
+exports.getAllBlogs = catchAsync(async (req, res) => {
   const blogs = await Blog.find();
   res
     .status(200)
     .render("blogs", { title: "Blog Ahead", blogs, length: blogs.length });
-  // } else {
-  //   res.render("unauthorized");
-  // }
 });
 
 exports.getBlog = catchAsync(async (req, res) => {

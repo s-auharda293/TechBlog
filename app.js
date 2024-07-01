@@ -7,6 +7,7 @@ const blogRouter = require("./routes/blogRoutes");
 const viewRouter = require("./routes/viewRoutes");
 const AppError = require("./utils/AppError");
 const globalErrorHandler = require("./controllers/globalErrorHandler");
+const { currentUser } = require("./middleware/authMiddleware");
 
 const app = express();
 
@@ -24,6 +25,8 @@ app.set("views", path.join(__dirname, "views"));
 
 // app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static("public"));
+
+app.get("*", currentUser);
 
 app.use("/views", viewRouter);
 app.use("/api/v1/users", userRouter);

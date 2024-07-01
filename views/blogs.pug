@@ -17,13 +17,8 @@ block headLink
             }
             a.details:link,a.details:active,a.details:visited{
                 text-decoration:none;
-
             }
-block headerLinks 
-    a(href='/views') Home
-    a(href='/views/blogs') Blog
-    a(href='/views/createBlog') Add Blog
-    a.sign-up#logout(href='/api/v1/users/logout' style={cursor:'pointer'}) Log Out
+            
 block content
         .main
             .blogs.container

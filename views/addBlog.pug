@@ -3,11 +3,6 @@ extends base
 block headLink
     link(rel='stylesheet' href='/css/addBlog.css')
 
-block headerLinks 
-        a(href='/views') Home
-        a(href='/views/blogs') Blog
-        a.sign-up#logout(style={cursor:'pointer'}) Log Out
-
 block content
     main
         img(class='background-img' src="./../img/take-note.svg", alt="", srcset="")
@@ -61,7 +56,7 @@ block content
             console.log(data)
             if (data.status === "success") {
             alert(data.message);
-            window.location.href = "http://127.0.0.1:3000/views/blogs";
+            location.href = "/views/blogs";
             }
             }catch (error) {
             console.log(error)
@@ -70,36 +65,3 @@ block content
             }
         });
 
-        //- document.getElementById('create-blog').addEventListener('submit', async (event) => {
-        //-     event.preventDefault(); // Prevent default form submission
-        //-     const title = document.getElementById('title').value;
-        //-     const tags = document.getElementById('tags').value;
-        //-     const content = document.getElementById('content').value;
-
-        //-     //- const body=JSON.stringify({title,tags,content})
-            
-        //-     const form = new FormData();
-        //-     form.append('title', title);
-        //-     form.append('tags', tags);
-        //-     form.append('content', content);
-        //-     form.append('photo', document.getElementById("photo").files[0]);
-
-        //-     try {
-        //-         const response = await fetch('http://127.0.0.1:3000/api/v1/blogs', {
-        //-             method: 'POST',
-        //-             body: form,
-        //-             //- credentials: 'include',
-        //-         });
-        //-         console.log(response)
-        //-         const data = await response.json();
-        //-         console.log(data)
-        //-         if (response.ok) {
-        //-             window.location.href = '/views/blogs';
-        //-         } else {
-        //-             alert('Error submitting blog');
-        //-         }
-        //-     } catch (error) {
-        //-         console.error('Error:', error);
-        //-         alert(error);
-        //-     }
-        //- });
